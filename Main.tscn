@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Building.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://Nuke.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1024, 0 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+Nuke = ExtResource( 3 )
+
+[node name="Buildings" type="Node" parent="."]
+
+[node name="Building" parent="Buildings" instance=ExtResource( 1 )]
+position = Vector2( 936, 560 )
+scale = Vector2( 0.2, 0.2 )
+gravity = 0.0
+
+[node name="Building2" parent="Buildings" instance=ExtResource( 1 )]
+position = Vector2( 88, 560 )
+scale = Vector2( 0.2, 0.2 )
+gravity = 0.0
+
+[node name="Building3" parent="Buildings" instance=ExtResource( 1 )]
+position = Vector2( 808, 560 )
+scale = Vector2( 0.2, 0.2 )
+gravity = 0.0
+
+[node name="Building4" parent="Buildings" instance=ExtResource( 1 )]
+position = Vector2( 216, 560 )
+scale = Vector2( 0.2, 0.2 )
+gravity = 0.0
+
+[node name="NukeSpawnTimerr" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="NukePath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="NukeSpawnLocation" type="PathFollow2D" parent="NukePath"]
+[connection signal="timeout" from="NukeSpawnTimerr" to="." method="_on_NukeSpawner_timeout"]
