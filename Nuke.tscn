@@ -13,18 +13,20 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 56.5685
+radius = 8.0
 
 [node name="Nuke" type="RigidBody2D"]
-collision_mask = 0
+collision_mask = 2147483650
 gravity_scale = 0.0
+contacts_reported = 10
+contact_monitor = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,3 +40,6 @@ default_color = Color( 1, 1, 1, 1 )
 round_precision = 15
 antialiased = true
 script = ExtResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

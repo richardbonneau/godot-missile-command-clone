@@ -1,7 +1,8 @@
 extends RigidBody2D
 
-export var min_speed = 200
-export var max_speed = 400
+export var min_speed = 50
+export var max_speed = 200
+var isNuke = true;
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -15,3 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

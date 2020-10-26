@@ -1,30 +1,32 @@
 extends Node2D
 export (PackedScene) var Nuke
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (PackedScene) var AntiNuke
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		var mousePosition = get_viewport().get_mouse_position()
+		print(mousePosition)
+		var antiNuke = AntiNuke.instance()
+		antiNuke.position = Vector2(512, 570)
+		antiNuke.target = mousePosition
+		add_child(antiNuke)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
 
 
 func _on_NukeSpawner_timeout():
-	
 	$NukePath/NukeSpawnLocation.offset = randi()
 	var nuke = Nuke.instance()
 	add_child(nuke)
 	var direction = $NukePath/NukeSpawnLocation.rotation + PI / 2
 	nuke.position = $NukePath/NukeSpawnLocation.position
-
 	
 	direction += rand_range(-PI / 4, PI / 4)
 	nuke.rotation = direction

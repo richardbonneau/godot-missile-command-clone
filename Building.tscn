@@ -11,8 +11,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 118.0
-height = 206.0
+radius = 82.9435
+height = 149.138
 
 [node name="Building" type="Area2D"]
 __meta__ = {
@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
