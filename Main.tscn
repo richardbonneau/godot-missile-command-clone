@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Building.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Nuke.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AntiNuke.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Bunker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -16,37 +17,41 @@ script = ExtResource( 2 )
 Nuke = ExtResource( 3 )
 AntiNuke = ExtResource( 4 )
 
+[node name="GUI" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 490.205
+margin_top = 30.0
+margin_right = 531.205
+margin_bottom = 31.685
+
 [node name="Buildings" type="Node" parent="."]
 
 [node name="Building2" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 46.874, 571 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="Building4" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 174.874, 571 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="Building5" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 302.874, 571 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="Building6" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 720, 568 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="Building3" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 848, 568 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="Building" parent="Buildings" instance=ExtResource( 1 )]
 position = Vector2( 976, 568 )
 scale = Vector2( 0.2, 0.2 )
-gravity = 0.0
 
 [node name="NukeSpawnTimerr" type="Timer" parent="."]
 autostart = true

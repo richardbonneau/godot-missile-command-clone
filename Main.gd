@@ -2,6 +2,7 @@ extends Node2D
 export (PackedScene) var Nuke
 export (PackedScene) var AntiNuke
 
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -3,12 +3,15 @@ extends RigidBody2D
 export var target = Vector2(0,0)
 export var missile_speed = 1
 var isNuke = false;
-
+var scoreText
+var score
 var missile_exploding = false
+var main
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.set_animation("missile")
+	scoreText = get_node("/root/Main/GUI/VBoxContainer/ScoreValue")
+	main  = get_node("/root/Main")
 	
 
 func _process(delta):
@@ -32,5 +35,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_AntiNuke_body_entered(body):
 	if(missile_exploding and body.isNuke):
+		main.score += 100
+		scoreText.text = str(main.score)
 		body.queue_free()
 
